@@ -6,10 +6,10 @@ from openpyxl import load_workbook
 
 # Fayl nomi
 script_path = pathlib.Path(__file__).parent.resolve()
-fayl_name = script_path / "data" / "5Q_United_C.xlsx"
+fayl_name = script_path / "data" / "5Q_United_C 3.xlsx"
 # Load the model and the scaler from the file
-model = joblib.load(script_path / "model" / "5Q_C.pkl")
-scaler = joblib.load(script_path / "model" / "5Q_C_scaler.pkl")
+model = joblib.load(script_path / "model" / "5Q_2410.pkl")
+scaler = joblib.load(script_path / "model" / "5Q_2410_scaler.pkl")
 
 # Faylni ochish
 wb = load_workbook(fayl_name)
@@ -36,10 +36,13 @@ for i, row in enumerate(ws.iter_rows(values_only=True)):
             # print(prediction, f' Prediction: {prediction[0]}')
             # Excel faylga bashorat natijasini yozish
             ws.cell(row=i, column=prediction_column, value=prediction[0])
+
+    # if(i>=30904):
+    #     break        
     
 
 # Yangilangan faylni saqlash
-updated_fayl_nomi = script_path / "result" / "5Q_United_C(result).xlsx"
+updated_fayl_nomi = script_path / "result" / "5Q_United_C 3.xlsx"
 wb.save(updated_fayl_nomi)
 print(f"Prediction is saved: {updated_fayl_nomi}")         
 

@@ -11,7 +11,7 @@ import joblib
 # Fayl nomi
 script_path = pathlib.Path(__file__).parent.resolve()
 
-fayl_name = script_path / "data" / "3Q_DB _2023_2024.xlsx"
+fayl_name = script_path / "data" / "3Q_DB _United_C 1.xlsx"
 
 # Faylni ochish
 wb = load_workbook(fayl_name)
@@ -68,5 +68,5 @@ print('Classification Report:')
 print(class_report)
 
 # Save the model and the scaler
-joblib.dump(model, script_path / "model" /"3Q_2412.pkl")
-joblib.dump(scaler, script_path / "model" /"3Q_2412_scaler.pkl")
+joblib.dump(model, script_path / "model" /"3Q_2410_2412.pkl")
+joblib.dump(scaler, script_path / "model" /"3Q_2410_2412_scaler.pkl")

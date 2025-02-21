@@ -11,8 +11,7 @@ import joblib
 # Fayl nomi
 script_path = pathlib.Path(__file__).parent.resolve()
 
-# fayl_name = script_path / "data" / "5Q_United_C 1 Test.xlsx"
-fayl_name = script_path / "data" / "5Q_United_C 1.xlsx"
+fayl_name = script_path / "data" / "5Q_United 3.xlsx"
 
 # Faylni ochish
 wb = load_workbook(fayl_name)
@@ -22,10 +21,13 @@ X = []
 Y = []
 for i, row in enumerate(ws.iter_rows(values_only=True)):
     i = i+1
-    if(i>=5):
+    if(i>=117081):
         if row[1] is not None and row[2] is not None and row[3] is not None and row[5] is not None and row[6] is not None:
             X.append([row[1] + row[2], row[3], row[5]])
             Y.append(row[6])
+
+    if(i>=130140):
+        break        
 
     
 # Ro‘yxatlarni numpy array yoki pandas DataFrame formatiga o‘tkazish
@@ -69,5 +71,5 @@ print('Classification Report:')
 print(class_report)
 
 # Save the model and the scaler
-joblib.dump(model, script_path / "model" /"5Q_C.pkl")
-joblib.dump(scaler, script_path / "model" /"5Q_C_scaler.pkl")
+joblib.dump(model, script_path / "model" /"5Q_2410.pkl")
+joblib.dump(scaler, script_path / "model" /"5Q_2410_scaler.pkl")
