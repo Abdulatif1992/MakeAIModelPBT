@@ -6,14 +6,11 @@ from openpyxl import load_workbook
 
 # Fayl nomi
 script_path = pathlib.Path(__file__).parent.resolve()
-fayl_name = script_path / "data" / "4Q_united 1.xlsx"
-
+fayl_name = script_path / "data" / "4Q_united_C.xlsx"
 
 # Faylni ochish
 wb = load_workbook(fayl_name)
 ws = wb.active  # Birinchi ishchi varaqni tanlash
-
-
 
 months = []
 for i, row in enumerate(ws.iter_rows(values_only=True)):
@@ -85,7 +82,7 @@ for i, row in enumerate(ws.iter_rows(values_only=True)):
     # if(i>=10):
     #     break        
 # Yangilangan faylni saqlash
-updated_fayl_nomi = script_path / "result" / "4Q_United 1.xlsx"
+updated_fayl_nomi = script_path / "result" / "4Q_United_C.xlsx"
 wb.save(updated_fayl_nomi)
 print(f"Prediction is saved: {updated_fayl_nomi}")         
 

@@ -10,9 +10,7 @@ import joblib
 
 # Fayl nomi
 script_path = pathlib.Path(__file__).parent.resolve()
-
-# fayl_name = script_path / "data" / "5Q_United_C 1 Test.xlsx"
-fayl_name = script_path / "data" / "4Q_united_C 2.xlsx"
+fayl_name = script_path / "data" / "4Q_united 1.xlsx"
 
 # Faylni ochish
 wb = load_workbook(fayl_name)
@@ -22,9 +20,9 @@ X = []
 Y = []
 for i, row in enumerate(ws.iter_rows(values_only=True)):
     i = i+1
-    if(i>=11961):
-        if row[1] is not None and row[2] is not None and row[3] is not None and row[5] is not None and row[6] is not None:
-            X.append([row[1] + row[2], row[3], row[5]])
+    if(i>=217453):
+        if row[1] is not None and row[2] is not None and row[3] is not None and row[4] is not None and row[6] is not None:
+            X.append([row[1] + row[2], row[3], row[4]])
             Y.append(row[6])
     
     # if(i >= 11960):
@@ -44,7 +42,7 @@ if not np.issubdtype(Y.dtype, np.number):
 X = np.nan_to_num(X)  # Barcha NaNlarni 0 bilan almashtirish
 
 # Train-test ajratish
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.1, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_state=42)
 
 
 # Standardize the features
@@ -71,5 +69,5 @@ print('Classification Report:')
 print(class_report)
 
 # Save the model and the scaler
-joblib.dump(model, script_path / "model" /"4Q_2501.pkl")
-joblib.dump(scaler, script_path / "model" /"4Q_2501_scaler.pkl")
+joblib.dump(model, script_path / "model" /"4Q_2402.pkl")
+joblib.dump(scaler, script_path / "model" /"4Q_2402_scaler.pkl")
